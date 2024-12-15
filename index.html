@@ -1,0 +1,643 @@
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<style type="text/css">body {
+
+            margin: 0;
+
+            font-family: 'Arial', sans-serif;
+
+            background: url('https://res.cloudinary.com/dpragculd/image/upload/v1732630187/photo-1500817487388-039e623edc21_xswhi8.avif') no-repeat center center fixed;
+
+            background-size: cover;
+
+            color: white;
+
+            text-align: center;
+
+            overflow: hidden; /* Prevent scrolling */
+
+            transition: background 1s ease-in-out;
+
+        }
+
+        #home-section, #sanatan-section, #spiritual-section, #food-section, #wisdom-section, #exercise-section, #dyanam-section, #temples-section, #bhagavatGeeta-section, #respectWomen-section, #yogaNidra-section {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+
+            opacity: 0;
+
+            transform: translateY(100%);
+
+            pointer-events: none;
+
+            overflow-y: auto;
+
+        }
+
+        #home-section.active, #sanatan-section.active, #spiritual-section.active, #food-section.active, #wisdom-section.active, #exercise-section.active, #dyanam-section.active, #temples-section.active, #bhagavatGeeta-section.active, #yogaNidra-section.active, #respectWomen-section.active {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+            pointer-events: all;
+
+        }
+
+        .photo-container {
+
+            margin-top: 30px;
+
+            display: inline-block;
+
+            padding: 10px;
+
+            border-radius: 20px;
+
+            background: rgba(255, 255, 255, 0.1);
+
+            backdrop-filter: blur(10px);
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+
+        }
+
+        .photo-container img {
+
+            border-radius: 20px;
+
+            max-height: 220px;
+
+            width: auto;
+
+            object-fit: contain;
+
+        }
+
+        .details {
+
+            margin-top: 30px;
+
+            font-size: 20px;
+
+            line-height: 2;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .details .item {
+
+            width: 80%;
+
+            max-width: 400px;
+
+            background: rgba(0, 0, 0, 0.7);
+
+            padding: 10px 20px;
+
+            border-radius: 8px;
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+
+            display: flex;
+
+            justify-content: flex-start;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: white;
+
+        }
+
+        .details .item span {
+
+            color: #00ffd5;
+
+            font-weight: bold;
+
+        }
+
+        .button-container {
+
+            margin-top: 30px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            width: 100%;
+
+        }
+
+        .button-container button {
+
+            padding: 15px 30px;
+
+            background: linear-gradient(45deg, #00ffd5, #009f95);
+
+            color: #000;
+
+            border: none;
+
+            border-radius: 25px;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            max-width: 90%;
+
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+
+            box-shadow: 0 4px 15px rgba(0, 255, 213, 0.5);
+
+        }
+
+        .button-container button:hover {
+
+            transform: scale(1.1);
+
+            box-shadow: 0 6px 25px rgba(0, 255, 213, 0.7);
+
+        }
+
+        .tiles {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 20px;
+
+            padding: 20px;
+
+            margin-top: 50px;
+
+            width: 80%;
+
+            align-items: center;
+
+        }
+
+        .tile {
+
+            background: rgba(255, 255, 255, 0.2);
+
+            backdrop-filter: blur(10px);
+
+            padding: 20px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+            text-align: center;
+
+            font-size: 24px;
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            width: 100%;
+
+            max-width: 300px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+        .tile:hover {
+
+            transform: scale(1.05);
+
+            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.7);
+
+        }
+
+        .audio-container, .video-container {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 15px;
+
+            width: 90%;
+
+            max-width: 500px;
+
+            border: 2px solid rgba(255, 255, 255, 0.5);
+
+            border-radius: 15px;
+
+            padding: 10px;
+
+            backdrop-filter: blur(10px);
+
+        }
+
+        .video-container video {
+
+            width: 100%;
+
+            height: auto;
+
+            border-radius: 15px;
+
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+
+        }
+
+        .image-card {
+
+            max-height: 60vh;
+
+            overflow: hidden;
+
+            border: 2px solid rgba(255, 255, 255, 0.5);
+
+            border-radius: 15px;
+
+            padding: 5px;
+
+            backdrop-filter: blur(10px);
+
+        }
+
+        .image-card img {
+
+            width: 100%;
+
+            height: auto;
+
+            object-fit: contain;
+
+        }
+</style>
+<!-- Home Section -->
+<div class="active" id="home-section">
+<div class="photo-container"><img alt="Raghu Ram's Photo" src="https://res.cloudinary.com/dpragculd/image/upload/v1732630652/Screenshot_2024-11-26-19-42-10-08_6012fa4d4ddec268fc5c7112cbb265e7-removebg-preview_vr5pdj.jpg" /></div>
+
+<div class="details">
+<div class="item"><span>Name:</span> Raghu Ram</div>
+
+<div class="item"><span>Age:</span> 19</div>
+
+<div class="item"><span>Profession:</span> Student</div>
+
+<div class="item"><span>Hobbies:</span> Coding, Enjoying Nature</div>
+
+<div class="item"><span>Identity:</span> Kattar Hindu</div>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('sanatan')">My Sanatan Life</button></div>
+</div>
+<!-- Sanatan Section -->
+
+<div id="sanatan-section">
+<div class="tiles">
+<div class="tile" onclick="navigateTo('spiritual')">Spiritual</div>
+
+<div class="tile" onclick="navigateTo('food')">Food</div>
+
+<div class="tile" onclick="navigateTo('wisdom')">Wisdom</div>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+<!-- Spiritual Section -->
+
+<div id="spiritual-section">
+<div class="tiles">
+<div class="tile" onclick="navigateTo('exercise')">Exercise</div>
+
+<div class="tile" onclick="navigateTo('dyanam')">Dyanam</div>
+
+<div class="tile" onclick="navigateTo('temples')">Temples</div>
+
+<div class="tile" onclick="navigateTo('bhagavatGeeta')">Bhagavat Geeta</div>
+
+<div class="tile" onclick="navigateTo('yogaNidra')">Yoga Nidra</div>
+
+<div class="tile" onclick="navigateTo('respectWomen')">Respect Women</div>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+<!-- Food Section -->
+
+<div id="food-section">
+<div class="tiles">
+<div class="tile" onclick="navigateTo('veg')">Veg</div>
+
+<div class="tile" onclick="navigateTo('noJunk')">No Junk</div>
+
+<div class="tile" onclick="navigateTo('sprouts')">Sprouts</div>
+
+<div class="tile" onclick="navigateTo('chewing')">12 Times Chewing</div>
+
+<div class="tile" onclick="navigateTo('noMobile')">No Mobile While Eating</div>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+<!-- Wisdom Section -->
+
+<div id="wisdom-section">
+<div class="tiles">
+<div class="tile" onclick="navigateTo('onlyStudy')">Only Study</div>
+
+<div class="tile" onclick="navigateTo('learnInfo')">Learn Info From Internet</div>
+
+<div class="tile" onclick="navigateTo('learnSkills')">Learn Skills</div>
+
+<div class="tile" onclick="navigateTo('noScrolling')">No Scrolling in Internet</div>
+
+<div class="tile" onclick="navigateTo('stockMarket')">Stock Market</div>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+
+<p>
+<audio id="navigation-sound" src="https://res.cloudinary.com/dpragculd/video/upload/v1732680506/mixkit-air-woosh-1489_vfxncr.wav"> </audio>
+<!-- Exercise Section --></p>
+
+<div id="exercise-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;"><!-- Image Cards -->
+<div class="image-card"><img alt="Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732648612/3da4b3a49b962bcbf53f6b0b536a52d0_hpy4g0.jpg" /></div>
+
+<div class="image-card"><img alt="Image 2" src="https://res.cloudinary.com/dpragculd/image/upload/v1732648760/7f14c816cf276ccbbf3ba2c8480fef61_odum3a.jpg" /></div>
+
+<div class="image-card"><img alt="Image 3" src="https://res.cloudinary.com/dpragculd/image/upload/v1732648872/1020696_orig_zauspy.jpg" /></div>
+
+<div class="image-card"><img alt="Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732648612/3da4b3a49b962bcbf53f6b0b536a52d0_hpy4g0.jpg" /></div>
+<!-- Audio Player -->
+
+<div class="audio-container">
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732682373/JD_Intro_Theme___Master_Mash-up___Thalapathy_mvefo1.mp4" type="audio/mp4" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732682374/Kaththi_Theme_The_Sword_of_Destiny_-_Full_Audio_ikl2ow.mp4" type="audio/mp4" /></audio>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<!-- Dyanam Section -->
+
+<div id="dyanam-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<div class="image-card"><img alt="Dyanam Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732649033/dba10de21c69ebbafb83121ab4c26ba8_axtmoy.jpg" /></div>
+
+<div class="image-card"><img alt="Dyanam Image 2" src="https://res.cloudinary.com/dpragculd/image/upload/v1732687243/c35fc46eebe3e2d66c30482c453ba1be_rii71r.jpg" /></div>
+
+<div class="image-card"><img alt="Dyanam Image 3" src="https://res.cloudinary.com/dpragculd/image/upload/v1732687247/d30e5ac3709a47822c06790bce1a155b_pw1cv6.jpg" /></div>
+
+<div class="image-card"><img alt="Dyanam Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732649033/dba10de21c69ebbafb83121ab4c26ba8_axtmoy.jpg" /></div>
+
+<div class="image-card"><img alt="Dyanam Image 2" src="https://res.cloudinary.com/dpragculd/image/upload/v1732687243/c35fc46eebe3e2d66c30482c453ba1be_rii71r.jpg" /></div>
+
+<div class="audio-container">
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684443/Gayatri_Mantra_The_most_powerful_Mantra_For_Spiritual_Growth_Divine_Naad_xf0zi5.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684438/Y2meta.app_-_50_Hz_POWER_Gamma_Waves___Supercharge_Yourself___Genius_Focus_Brain_Power___Simply_Hypnotic_128_kbps_soblax.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684428/Y2meta.app_-_1_Hour_Study_Music_Beta_Waves_For_Concentration___Meditation_Music___Focus___Binaural_Beats_128_kbps_vv5kv9.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684404/Rudra_Gayatri_Mantra_-_Armonian_lc2fjg.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684403/Sudarshan_-_Kriya_Ujjai_Breathing_Bhastrika_Om_Chanting_Pranayama_Count_English_pranayam_1_qctldj.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684387/Sri_Ganesha_Pancharatnam_Armonian_bfv4vj.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684371/Aigiri_Nandini_Mahishasura_Mardini_Stotram_Armonian_hqfbls.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684366/Shiv_Tandav_Stotram_-_Armonian_e8h5us.mp3" type="audio/mp3" /></audio>
+
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732684364/Agajanana_Padmarkam_Shri_Ganesha_Slokam_yzovp8.mp3" type="audio/mp3" /></audio>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<!-- Bhagavat Geeta Section -->
+
+<div id="bhagavatGeeta-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<div class="image-card"><img alt="Bhagavat Geeta Image" src="https://res.cloudinary.com/dpragculd/image/upload/v1732701803/150992098_912795209492884_1760624372879770857_n_iclnwz.jpg" /></div>
+
+<div class="image-card"><img alt="Bhagavat Geeta Image" src="https://res.cloudinary.com/dpragculd/image/upload/v1732707370/3763c5b146409d3f5f7a1297f2001131_h6rvvr.jpg" /></div>
+
+<div class="image-card"><img alt="Bhagavat Geeta Image" src="https://res.cloudinary.com/dpragculd/image/upload/v1732707465/b110533cdf8e4460f83a10c8a0d83f7e_xoaixs.jpg" /></div>
+
+<div class="video-container">
+<video controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732701510/videoplayback_cwtcfv.mp4" type="video/mp4" /></video>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<!-- Temples Section -->
+
+<div id="temples-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<div class="image-card"><img alt="Temples Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732699599/devalay_obeisance_xop5tt.jpg" /></div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<!-- Yoga Nidra Section -->
+
+<div id="yogaNidra-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<div class="image-card"><img alt="Yoga Nidra Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732711057/f85ef39ea9418b15f316f255fdc19c91_odty6w.jpg" /></div>
+
+<div class="image-card"><img alt="Yoga Nidra Image 2" src="https://res.cloudinary.com/dpragculd/image/upload/v1732711057/f85ef39ea9418b15f316f255fdc19c91_odty6w.jpg" /></div>
+
+<div class="audio-container">
+<audio controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732711231/Yoga_Nidra_-_Guided_Meditation_for_Sleep_Relaxation_by_Gurudev_Non-Sleep_Deep_Rest_NSDR_cxg92m.mp3" type="audio/mp3" /></audio>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<!-- Respect Women Section -->
+
+<div id="respectWomen-section">
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+<div class="image-card"><img alt="Respect Women Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732713055/Man_needs_to_respect_woman_d83wrh.jpg" /></div>
+
+<div class="image-card"><img alt="Respect Women Image 2" src="https://res.cloudinary.com/dpragculd/image/upload/v1732713046/8ea45f33f6b7a07fcf20d292a8e2b140_g3cpzl.jpg" /></div>
+
+<div class="image-card"><img alt="Respect Women Image 3" src="https://res.cloudinary.com/dpragculd/image/upload/v1732713046/13f00c253881366d20cea4795122d0b9_sqmoje.jpg" /></div>
+
+<div class="image-card"><img alt="Respect Women Image 1" src="https://res.cloudinary.com/dpragculd/image/upload/v1732713055/Man_needs_to_respect_woman_d83wrh.jpg" /></div>
+
+<div class="video-container">
+<video controls=""><source src="https://res.cloudinary.com/dpragculd/video/upload/v1732713331/VakeelSaab__-_Maguva_Maguva_Full_Video_Song___Pawan_Kalyan___Sriram_Venu___Sid_Sriram___Thaman_S_vf40sd.mp4" type="video/mp4" /></video>
+</div>
+
+<div class="button-container"><button onclick="navigateTo('home')">Home</button></div>
+</div>
+</div>
+<script>
+
+        function hideAllSections() {
+
+            document.querySelectorAll('#home-section, #sanatan-section, #spiritual-section, #food-section, #wisdom-section, #exercise-section, #dyanam-section, #bhagavatGeeta-section, #temples-section, #respectWomen-section, #yogaNidra-section')
+
+            .forEach(section => {
+
+                section.classList.remove('active');
+
+                section.style.opacity = '0';
+
+                section.style.transform = 'translateY(100%)';
+
+                section.style.pointerEvents = 'none';
+
+            });
+
+        }
+
+        function playSound() {
+
+            const sound = document.getElementById('navigation-sound');
+
+            sound.currentTime = 0; // Reset sound to start
+
+            sound.play();
+
+        }
+
+        function stopAllAudio() {
+
+            const audioElements = document.querySelectorAll('audio');
+
+            audioElements.forEach(audio => {
+
+                audio.pause();
+
+                audio.currentTime = 0; // Reset audio to start
+
+            });
+
+        }
+
+        function navigateTo(section) {
+
+            stopAllAudio(); // Stop all audio when navigating
+
+            playSound();
+
+            const backgrounds = {
+
+                home: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732630187/photo-1500817487388-039e623edc21_xswhi8.avif')",
+
+                sanatan: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732635218/9f48cef27a38fdbf7b04f3b3bfe7a9ed_c8zh7q.jpg')",
+
+                spiritual: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732637092/4eed1cc7efa2e4397902f22b2d5d9081_qtr3rg.jpg')",
+
+                food: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732637727/f0461d8d7604f0e717b4f64ee59f7de0_zhbhq8.jpg')",
+
+                wisdom: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732638374/df1115ca43b9b38651965aee16fdadc6_mfbnlv.jpg')",
+
+                exercise: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732683623/b6f5fa1452dbbc9ea4177352fc39b238_u5umhy.jpg')",
+
+                dyanam: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732686959/47753f3997bd4b7a3ef86133b9ae10a4_riabcy.jpg')",
+
+                temples: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732699479/587b66c4d8c77bade2f1462d57604626_bastho.jpg')",
+
+                bhagavatGeeta: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732701139/499826b504c56555e1c887c17d549aab_ougn8n.jpg')",
+
+                yogaNidra: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732708620/c438365a91b6b7f847039a20e32c09b7_dk4kbj.jpg')",
+
+                respectWomen: "url('https://res.cloudinary.com/dpragculd/image/upload/v1732713047/13a7257afb79d86e199e4e12835bf421_og1bgx.jpg')"
+
+            };
+
+            try {
+
+                if (!backgrounds[section]) {
+
+                    throw new Error(`Background for section "${section}" not found.`);
+
+                }
+
+                document.body.style.background = `${backgrounds[section]} no-repeat center center fixed`;
+
+                document.body.style.backgroundSize = "cover";
+
+                hideAllSections();
+
+                const targetSection = document.getElementById(`${section}-section`);
+
+                if (!targetSection) {
+
+                    throw new Error(`Section "${section}" does not exist.`);
+
+                }
+
+                targetSection.classList.add('active');
+
+                targetSection.style.opacity = '1';
+
+                targetSection.style.transform = 'translateY(0)';
+
+                targetSection.style.pointerEvents = 'all';
+
+            } catch (error) {
+
+                console.error(`Error navigating to ${section} section: `, error);
+
+            }
+
+        }
+
+    </script>
